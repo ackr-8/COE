@@ -51,11 +51,16 @@
 
         <div class="col-lg-4" >
           <div style="width: 80%; padding: 40px 0px;  display: flex; flex-direction: column; ">
-           <input type="text" placeholder="Full Name" style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px; ;">
-           <input type="email"name="Requester:" placeholder="E-mail" style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px;">
-           <input type="text" placeholder="Message"name="subject"  style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px;">
-           <input type="text" placeholder="seshapranav@gmail.com"name="Assignee" style="display: none;" >
-           <button type="button" class="btn btn-danger" style="margin-top: 80px; border-radius: 20px;background-color: rgb(114, 41, 7);" id="sender">Contact Us</button>
+            <form onchange="mail(this)"  >
+                <input type="text" placeholder="FullName" name="name" style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px; ;">
+                <input type="email"name="Requester:" placeholder="E-mail" style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px;">
+                <input type="text" placeholder="Message"name="subject"  style="margin: 20px 0px; border: none; border-bottom: 2px solid black; padding-bottom: 15px;">
+                <input type="text" placeholder="seshapranav@gmail.com"name="Assignee" style="display: none;" >
+                <a id="send"> <button type="button" class="btn btn-danger" style="margin-top: 80px; border-radius: 20px;background-color: rgb(114, 41, 7);"  >Contact Us</button></a>
+               
+               
+            </form>
+
           </div> 
         </div>
 
@@ -107,19 +112,28 @@
 </footer>
 </body>
 <script>
-    document.getElementById('sender').addEventListener("click", sendEmail);
-
-function GetBody() {
-  var body = "Assignee : " + document.getElementById('Assignee').value + '\n' + "Requester: " + document.getElementById('Requester').value + '\n';
-  return body;
-};
-
-function sendEmail() {
-  var email = 'someone@gmail.com';
-  var body = GetBody();
-  var subject = document.getElementById('subject').value;
-  var mailto_link = 'mailto:' + email + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-  window.location.href = mailto_link;
+// function mail(form) {
+//     var name = form.name.value;
+//    var message=form.Message.value;
+//     var str = "mailto:seshapranav@gmail.com?subject=Contact form from coe";
+//     console.log(str+"lol");
+//         document.getElementById('send').href = str;
+// }
+function mail(form) {
+    var name = form.name.value;
+    var message=form.subject.value;
+    var str = `mailto:director.air@vitap.ac.in?subject=mail from  ${name}&body=`;
+    if (name.length > 0) {
+        str += "Hi my name is " + name + ", ";
+        str+="Message is "+message+" ,"
+    } 
+    str += "%0D%0ARegards,%0D%0A" + name;
+        document.getElementById('send').href = str;
+    // if (warning.length > 0) {
+    //     alert(warning)
+    // } else {
+        
+    // }
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
