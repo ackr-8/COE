@@ -102,15 +102,18 @@ h3 {
 .images_subject{
     border:10px solid #FFCDCD;
     border-radius: 65px;
-    width: 308px;
-    height: 358px;
+    width: 300px;
+    height: 350px;
+}
+.coursel_text{
+    font-family: playfair Display;
 }
 .image_caption{
     /* margin-left: 55px; */
     text-align: center;
     font-family: playfair Display;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 27px;
 }
 figcaption{
     font-family: Montserrat;
